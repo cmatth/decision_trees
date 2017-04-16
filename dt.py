@@ -33,5 +33,7 @@ print 'Entropy(S) = %f' %(ent.entropy(train, attributes['class'], labels['class'
 
 results = []
 for attr in attributes:
-    print 'InfoGain('+ dataset +','+attr+') = %f' \
-%(ent.infoGain(labels[attr], attributes[attr],train,attributes['class'],labels['class']))
+    pass
+    #print 'InfoGain('+ dataset +','+attr+') = %f' \
+#%(ent.infoGain(labels[attr], attributes[attr],train,attributes['class'],labels['class']))
+print ent.maxInfoGain(train, labels, attributes)

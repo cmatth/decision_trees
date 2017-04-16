@@ -41,5 +41,10 @@ def infoGain(attr_index, attribute, set, classes, class_index):
             newEntropy += (float(v_size) / size) * v_ent
     return (setEntropy - newEntropy)
 
-def maxInfoGain():
-    print 'good job, holdie'
+def maxInfoGain(set, labels, attributes):
+    orderedGain = []
+    for x in attributes:
+        gain = (x, infoGain(labels[x], attributes[x], set, attributes['class'], labels['class']))
+        orderedGain.append(gain)
+    orderedGain.sort(key=lambda tup: tup[1], reverse=True)
+    return orderedGain
