@@ -40,3 +40,6 @@ def infoGain(attr_index, attribute, set, classes, class_index):
             v_ent = entropy(newSets[v], classes, class_index)
             newEntropy += (float(v_size) / size) * v_ent
     return (setEntropy - newEntropy)
+
+def maxInfoGain():
+    pass
