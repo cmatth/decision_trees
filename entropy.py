@@ -42,4 +42,4 @@ def infoGain(attr_index, attribute, set, classes, class_index):
     return (setEntropy - newEntropy)
 
 def maxInfoGain():
-    pass
+    print 'good job, holdie'
