@@ -4,6 +4,7 @@ import entropy as ent
 import nodes
 import random
 import copy
+from subprocess import call
 
 dataset = 'voting'
 
@@ -25,9 +26,8 @@ mostcommon = ent.mostCommon(train, labels, attributes)
 list = []
 tree = nodes.root(train, labels, attributes, mostcommon, list)
 
-print len(list)
-
-raw_input('begin evaluation')
+call(["clear"])
+raw_input('Tree Built!\nBegin Evaluation')
 
 
 
@@ -36,29 +36,10 @@ raw_input('begin evaluation')
 
 
 
-### TESTING ###
-'''
-attr = 'doors'
-train = ent.divideByAttributes(labels[attr], train, attributes[attr])
-for key in train:
-    print '***************' + key + '*****************'
-    for x in train[key]:
-        print x[labels['class']]
-'''
-'''''
-print 'Entropy(S) = %f' %(ent.entropy(train, attributes['class'], labels['class']))
 
-results = []
-for attr in attributes:
-    pass
-    #print 'InfoGain('+ dataset +','+attr+') = %f' \
-#%(ent.infoGain(labels[attr], attributes[attr],train,attributes['class'],labels['class']))
-print ent.maxInfoGain(train, labels, attributes)
-'''
 
 def optimize(list, set, classes):
     cur = evaluate(list[0], set)
-    print cur
 
     for i in range(0,2000):
         ind = random.randint(1,len(list)-1)
@@ -99,11 +80,37 @@ def evaluate(tree, set):
 # print len(test)
 
 # Evaluate Test Set Performance
+print "****************************"
 print "Test Results: %f %%" %(evaluate(tree,test))
 print "Number of nodes: %d" %(len(list))
+print "****************************"
 #print "Results: %f %%" %(evaluate(tree,train))
+raw_input("Begin Optimization")
 list = optimize(list, train, attributes['class'])
-print "**************************************"
-print "Results: %f %%" %(evaluate(list[0],test))
-print "Number of nodes: %d" %(len(list))
+print "****************************"
+print "Optimized Results: %f %%" %(evaluate(list[0],test))
+print "****************************"
+raw_input("PRESS ENTER TO END")
+call(['clear'])
+#print "Number of nodes: %d" %(len(list))
 #print "Results: %f %%" %(evaluate(list[0],train))
+
+### TESTING ###
+'''
+attr = 'doors'
+train = ent.divideByAttributes(labels[attr], train, attributes[attr])
+for key in train:
+    print '***************' + key + '*****************'
+    for x in train[key]:
+        print x[labels['class']]
+'''
+'''''
+print 'Entropy(S) = %f' %(ent.entropy(train, attributes['class'], labels['class']))
+
+results = []
+for attr in attributes:
+    pass
+    #print 'InfoGain('+ dataset +','+attr+') = %f' \
+#%(ent.infoGain(labels[attr], attributes[attr],train,attributes['class'],labels['class']))
+print ent.maxInfoGain(train, labels, attributes)
+'''

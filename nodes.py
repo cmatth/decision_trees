@@ -46,7 +46,7 @@ class root:
                         self.children[x] = node(subsets[x], labels, attr, mostCommon, self, list)
                     else:
                         self.children[x] = leaf(mostCommon, self)
-                        print mostCommon
+                        #print mostCommon
 
         # create leaf node
         else:
@@ -62,7 +62,7 @@ class root:
 
             self.feature = self.default
             self.leaf = True
-            print self.feature
+            #print self.feature
 
     def eval(self, labels, attributes, case, mostCommon):
         if self.leaf == True:
