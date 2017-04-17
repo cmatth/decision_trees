@@ -48,3 +48,13 @@ def maxInfoGain(set, labels, attributes):
         orderedGain.append(gain)
     orderedGain.sort(key=lambda tup: tup[1], reverse=False)
     return orderedGain
+
+def mostCommon(set, labels, attributes):
+    biggest = 0
+    length = 0
+    dataset = divideByAttributes(labels['class'], set, attributes['class'])
+    for x in dataset:
+        if len(dataset[x]) > length:
+            biggest = x
+            length = len(dataset[x])
+    return biggest

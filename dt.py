@@ -2,6 +2,8 @@ import readData as rd
 import labels as l
 import entropy as ent
 import nodes
+import random
+import copy
 
 dataset = 'voting'
 
@@ -18,19 +20,19 @@ test = sets[2]
 labels = l.getLabels(dataset)
 attributes = l.getAttributes(dataset)
 
-tree = nodes.root(train, labels, attributes)
+mostcommon = ent.mostCommon(train, labels, attributes)
+
+list = []
+tree = nodes.root(train, labels, attributes, mostcommon, list)
+
+print len(list)
 
 raw_input('begin evaluation')
 
-# Evaluate Test Set Performance
-correct = 0
-total = len(test)
-for x in test:
-    if x[labels['class']] == tree.eval(labels, attributes,x):
-        correct += 1
-    else:
-        pass
-print "Results: %d \%" %(correct/total)
+
+
+#print correct
+#print len(test)
 
 
 
@@ -53,3 +55,55 @@ for attr in attributes:
 #%(ent.infoGain(labels[attr], attributes[attr],train,attributes['class'],labels['class']))
 print ent.maxInfoGain(train, labels, attributes)
 '''
+
+def optimize(list, set, classes):
+    cur = evaluate(list[0], set)
+    print cur
+
+    for i in range(0,2000):
+        ind = random.randint(1,len(list)-1)
+        if list[ind].leaf == True:
+            pass
+        else:
+            for x in classes:
+                listy = copy.deepcopy(list)
+                c = random.choice(listy[ind].children.keys())
+                listy[ind].children[c] = nodes.leaf(x,listy[ind])
+                new = evaluate(listy[0], set)
+                print "%f\r" %(new),
+                if new > cur:
+                    cur = new
+                    list = copy.deepcopy(listy)
+                else:
+                    pass
+    return list
+
+
+
+def evaluate(tree, set):
+    correct = 0
+    total = len(set)
+
+    for x in test:
+        # print "actual", x[labels['class']]
+        # print "result", tree.eval(labels, attributes, x, mostcommon)
+        if x[labels['class']] == tree.eval(labels, attributes, x, mostcommon):
+
+            correct += 1
+        else:
+            pass
+    return (float(correct) / total)
+
+
+# print correct
+# print len(test)
+
+# Evaluate Test Set Performance
+print "Test Results: %f %%" %(evaluate(tree,test))
+print "Number of nodes: %d" %(len(list))
+#print "Results: %f %%" %(evaluate(tree,train))
+list = optimize(list, train, attributes['class'])
+print "**************************************"
+print "Results: %f %%" %(evaluate(list[0],test))
+print "Number of nodes: %d" %(len(list))
+#print "Results: %f %%" %(evaluate(list[0],train))
