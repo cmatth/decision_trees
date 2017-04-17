@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="47eba4a8-09cd-493c-885f-4c0ce40d99d3" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dt.py" afterPath="$PROJECT_DIR$/dt.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nodes.py" afterPath="$PROJECT_DIR$/nodes.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -374,7 +372,14 @@
       <option name="project" value="LOCAL" />
       <updated>1492408617464</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ready for running experiments">
+      <created>1492410388352</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1492410388352</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -408,7 +413,8 @@
     <MESSAGE value="starting tree builder" />
     <MESSAGE value="chasing bugs" />
     <MESSAGE value="implemented pruning" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented pruning" />
+    <MESSAGE value="ready for running experiments" />
+    <option name="LAST_COMMIT_MESSAGE" value="ready for running experiments" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
