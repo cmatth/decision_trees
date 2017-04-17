@@ -46,5 +46,5 @@ def maxInfoGain(set, labels, attributes):
     for x in attributes:
         gain = (x, infoGain(labels[x], attributes[x], set, attributes['class'], labels['class']))
         orderedGain.append(gain)
-    orderedGain.sort(key=lambda tup: tup[1], reverse=True)
+    orderedGain.sort(key=lambda tup: tup[1], reverse=False)
     return orderedGain
