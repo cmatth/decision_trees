@@ -17,9 +17,9 @@ class root:
         if len(attributes) > 1:
             self.feature = ent.maxInfoGain(set, labels, attributes)[0][0]            #print "feature",self.feature
             if self.feature == 0:
-                for x in subsets:
-                    print x, "*************subets"
-                    print subsets[x]
+                #for x in subsets:
+                    #print x, "*************subets"
+                   # print subsets[x]
                 print '***************set'
                 for x in set:
                     print x
